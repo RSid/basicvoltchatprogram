@@ -5,6 +5,10 @@ class MainController < Volt::ModelController
     # Add code for when the index view is loaded
   end
 
+  def select_conversation(user)
+    params._user_id = user._id
+  end
+
   private
 
   # The main template contains a #template binding that shows another
