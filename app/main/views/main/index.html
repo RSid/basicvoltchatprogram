@@ -3,12 +3,18 @@
 
 <:Body>
   <h1>Home</h1>
-  <div class="row">
-  <div class="col-md-4">
+  {{ if Volt.user }}
+    <div class ="row">
+    <div class="col-md-4">
     {{ _users.each do |user| }}
-      <div class="contact">
-        {{user._name}}
+    {{ if user._id != Volt.user_id }}
+      <div class = "contact {{ if params._user_id == user._id }} active {{ end }}" e-click="Select_conversation(user)">
+      {{ user._name }}
       </div>
     {{ end }}
-  </div>
-  </div>
+    {{ end }}
+    </div>
+    </div>
+  {{ else }}
+    <p> This is a sample Volt application! Gotta log in for the chat magic.</p>
+  {{ end }}
